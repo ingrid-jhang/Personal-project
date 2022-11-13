@@ -3,9 +3,14 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-  getTest,
+  getPets,
+  getPet,
 }
 
-function getTest(db = connection) {
-  return db('test').select()
+function getPets(db = connection) {
+  return db('pets').select()
+}
+
+function getPet(id, db = connection) {
+  return db('pets').select().where('id', id).first()
 }

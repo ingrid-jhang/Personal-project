@@ -1,0 +1,45 @@
+.image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 260px;
+  height: 260px;
+  display: block;
+  align-content: center;
+  align-items: center;
+}
+
+.title {
+  margin:50px,50px,10px,50px;
+  padding-top: 30px;
+  color: black;
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 60px;
+}
+
+.pets-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 50px;
+  padding: 100px;
+}
+
+.pets-container > div {
+  text-align: center;
+  padding: 2px 0;
+  font-size: 15px;
+}
+
+.pet-imfo > p {
+  font-size: 20px;
+}
+
+
+footer {
+  height: 30px;
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2em;
+  background-color: rgb(92, 92, 92);
+  color: white;
+}

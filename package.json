@@ -40,6 +40,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "knex": "^2.3.0",
+    "react-router-dom": "^6.4.3",
     "sqlite3": "^5.1.2"
   },
   "devDependencies": {
