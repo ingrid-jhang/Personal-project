@@ -29,12 +29,13 @@
   grid-template-columns: auto auto auto auto;
   grid-gap: 50px;
   padding: 100px;
-  text-align: center;
+  align-content: center;
+ 
 }
 
 
 .pets-container > div {
- 
+  text-align: center;
   padding: 2px 0;
   font-size: 15px;
 }
