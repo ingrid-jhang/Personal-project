@@ -25,10 +25,10 @@ const Pets = () => {
               <div key={id}>
                 <img className="image" src={image} alt="pets" />
                 <h2 className="ui header">{name}</h2>
-                <p>
+                <p className="ui small header">
                   {breed} . {age}
                 </p>
-                <p>
+                <p className="ui small header">
                   <i className="map marker alternate icon"></i>
                   {location}
                 </p>

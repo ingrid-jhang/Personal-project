@@ -19,7 +19,8 @@ const PetSummary = () => {
 
   return (
     <>
-      <div className="list-box ui padded container segment ">
+      {/* <div className="list-box ui padded container segment "> */}
+      <div className="pet-container">
         <img className="image" src={petData.image} alt="pets" />
         <div className="pet-imfo">
           <h1>{petData.name}</h1>
