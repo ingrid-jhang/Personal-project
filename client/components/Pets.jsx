@@ -16,31 +16,40 @@ const Pets = () => {
       })
   }, [])
 
-  function filterPet(pet) {
-    if (!type) {
-      return true
-    }
-    return pet.type_id == type
-  }
-  const filterPets = petsData.filter(filterPet)
-  console.log(filterPets)
-
+  //get type from select
   function handleChange(e) {
     setType(e.target.value)
   }
 
+  function filterPet(pets) {
+    if (!type) {
+      return true
+    }
+    return pets.type_id == type
+  }
+  const filteredPets = petsData.filter(filterPet)
+  console.log(filteredPets)
+
   //HANDCHANGE
   return (
     <>
-      <label htmlFor="pet-select">Choose a pet:</label>
-      <select name="pets" id="pet-select" onChange={handleChange}>
-        <option value="">--Please choose an option--</option>
-        <option value="">All Pets</option>
-        <option value="2">Dog</option>
-        <option value="1">Cat</option>
-      </select>
+      <Link to={`/pets/form`} setPetsDataFn={setPetsData}>
+        <button>ADD PET</button>
+      </Link>
+      <div className="selectBar">
+        <label htmlFor="pet-select" className="ui small header">
+          Choose a pet:
+        </label>
+        <select name="pets" id="pet-select" onChange={handleChange}>
+          <option value="">--Please choose a type--</option>
+          <option value="">All Pets</option>
+          {/* typeDB map the options value={id} */}
+          <option value="2">Dogs</option>
+          <option value="1">Cats</option>
+        </select>
+      </div>
       <div className="pets-container">
-        {filterPets.map(({ id, name, breed, age, location, image }) => {
+        {filteredPets.map(({ id, name, breed, age, location, image }) => {
           return (
             <Link to={`/pets/${id}`} key={id}>
               <div key={id}>

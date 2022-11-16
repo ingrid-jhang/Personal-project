@@ -15,3 +15,13 @@ export function getPet(id) {
     return res.body
   })
 }
+
+export function addNewPet(form) {
+  return request
+    .post(`${petUrl}form`)
+    .send(form)
+    .then((res) => {
+      console.log(res.body)
+      return res.body
+    })
+}

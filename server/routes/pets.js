@@ -15,6 +15,21 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/form', (req, res) => {
+  const newPet = req.body
+  db.addNewPet(newPet)
+    .then(() => {
+      return db.getPets()
+    })
+    .then((pets) => {
+      res.json(pets)
+    })
+    .catch((e) => {
+      console.log(e)
+      res.sendStatus(500)
+    })
+})
+
 router.get('/:id', (req, res) => {
   const id = req.params.id
   db.getPet(id)

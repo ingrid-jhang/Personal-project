@@ -1,16 +1,15 @@
-/* 
-.header {
-  padding-bottom: 50px;
+/* body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 } */
-
 .image {
   border-radius: 20%;
   object-fit: cover;
   width: 260px;
   height: 260px;
   display: block;
-  align-content: center;
-  align-items: center;
+
 }
 
 .title {
@@ -22,21 +21,47 @@
   font-size: 60px;
 }
 
+.selectBar{
+  /* margin:20px 500px 0px 500px; */
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  padding:20px 40%;
+}
+
+
+
 .pets-container {
-  margin-top: 50px;
+  display: inline-grid;
+  justify-items: center;
+
   display: grid;
   background-color:rgb(196, 212, 225);
   grid-template-columns: auto auto auto auto;
   grid-gap: 50px;
-  padding: 100px;
-  align-content: center;
- 
+  padding: 60px;
+  margin: 20px 50px;
 }
+/* 
+.pets-container {
+  justify-items: center;
+  position:relative;
+  display: grid;
+  background-color:rgb(196, 212, 225);
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 50px;
+  padding: 60px;
+  margin: 20px 50px;
+} */
+
 
 
 .pets-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 2px 0;
+  padding: 2px 0 2px 2px;
   font-size: 15px;
 }
 
@@ -71,7 +96,8 @@
 
 
 footer{
-  /* position: absolute; */
+  margin-top: auto;
+
   bottom: 0;
   height: 30px;
   text-align: center;
