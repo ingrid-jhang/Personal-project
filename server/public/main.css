@@ -1,8 +1,9 @@
-/* body{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-} */
+* {
+  margin: 0px;
+  padding:0px;
+  font-family: monospace;
+  box-sizing: border-box;
+}
 .image {
   border-radius: 20%;
   object-fit: cover;
@@ -17,7 +18,7 @@
   padding-top: 30px;
   color: black;
   text-align: center;
-  font-family:'Courier New', Courier, monospace;
+  /* font-family:'Courier New', Courier, monospace; */
   font-size: 60px;
 }
 
@@ -28,42 +29,51 @@
   font-size: 15px;
   padding:20px 40%;
 }
+.formButton{
+  text-align: center;
+}
 
+.inputForm{
 
+  text-align: center;
+  background-color: bisque;
+  width: 50%;
+  margin-left: 25%;
+}
+
+option{
+  text-align: center;
+}
+
+.inputDescriptionBox{
+  height:200px;
+  width: 260px;
+}
 
 .pets-container {
-  display: inline-grid;
+ /* display: inline-grid;  */
+  /* display:flex; */
   justify-items: center;
-
   display: grid;
   background-color:rgb(196, 212, 225);
   grid-template-columns: auto auto auto auto;
   grid-gap: 50px;
-  padding: 60px;
+  padding: 10%;
   margin: 20px 50px;
 }
-/* 
-.pets-container {
-  justify-items: center;
-  position:relative;
-  display: grid;
-  background-color:rgb(196, 212, 225);
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 50px;
-  padding: 60px;
-  margin: 20px 50px;
-} */
-
-
 
 .pets-container > div {
-  display: flex;
+  /* flex:1; */
+  /* position:relative; */
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 2px 0 2px 2px;
   font-size: 15px;
 }
+
+/* ////////PET///////// */
+
 
 .pet-container {
   position:relative;
@@ -90,6 +100,7 @@
 }
 
 .pet-imfo > h1 {
+  position:relative;
   font-size: 35px;
 }
 
@@ -101,9 +112,36 @@ footer{
   bottom: 0;
   height: 30px;
   text-align: center;
-  font-family: 'Courier New','Nunito Sans', sans-serif;
+  /* font-family: 'Courier New','Nunito Sans', sans-serif; */
   font-size: 1.2em;
   background-color: rgb(92, 92, 92);
   color: white;
   width: 100%;
 }
+
+
+
+@media (max-width: 500px)
+ {
+  body {
+    position:absolute;
+    padding: 1rem;
+  }
+  .pets-container > div {
+    flex:1;
+    /* position:relative; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2px 0 2px 2px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* @media (min-width: 1200px) {
+  .pets-container  {
+      max-width: 1140px; }
+  
+  } */

@@ -33,9 +33,11 @@ const Pets = () => {
   //HANDCHANGE
   return (
     <>
-      <Link to={`/pets/form`} setPetsDataFn={setPetsData}>
-        <button>ADD PET</button>
-      </Link>
+      <div className="formButton">
+        <Link to={`/pets/form`}>
+          <button>ADD PET</button>
+        </Link>
+      </div>
       <div className="selectBar">
         <label htmlFor="pet-select" className="ui small header">
           Choose a pet:
