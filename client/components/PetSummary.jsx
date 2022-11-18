@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import { getPet } from '../apiClient'
 
@@ -35,8 +35,27 @@ const PetSummary = () => {
           </p>
           <p>{petData.age}</p>
           <p>Color: {petData.color}</p>
-
           <p>{petData.description}</p>
+        </div>
+        <div className="applyButton">
+          <p>
+            <i className="check icon"></i>Desexed
+          </p>
+
+          <p>
+            <i className="check icon"></i>Microchipped
+          </p>
+
+          <p>
+            <i className="check icon"></i>Microchipped
+          </p>
+
+          <p>
+            <i className="check icon"></i>Worming and flea treatment
+          </p>
+          <Link to={`/${petData.id}/ApplyForm`}>
+            <button className="small ui orange button">Adopt Me !</button>
+          </Link>
         </div>
       </div>
     </>

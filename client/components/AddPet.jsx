@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { addNewPet } from '../apiClient'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const initialFormData = {
   name: '',
@@ -17,6 +17,7 @@ const initialFormData = {
 
 function AddPet() {
   const [form, setForm] = useState(initialFormData)
+  const navigate = useNavigate()
 
   // const [image, setImage] = useState(initialFormData.image)
   // function onImageChange(e) {
@@ -42,6 +43,7 @@ function AddPet() {
       .then((newPets) => {
         console.log(newPets)
         setForm(initialFormData) //clean the input after submit
+        navigate('/')
       })
       .catch((err) => {
         console.error(err.message)
@@ -147,6 +149,7 @@ function AddPet() {
                 onChange={handleChange}
                 value={form.description}
                 name="description"
+                placeholder="Tell us something about him/her.."
               />
             </label>
           </div>

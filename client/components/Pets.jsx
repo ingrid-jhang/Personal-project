@@ -8,7 +8,7 @@ const Pets = () => {
   useEffect(() => {
     getPets()
       .then((pets) => {
-        console.log(pets)
+        //console.log(pets)
         setPetsData(pets)
       })
       .catch((err) => {
@@ -28,14 +28,14 @@ const Pets = () => {
     return pets.type_id == type
   }
   const filteredPets = petsData.filter(filterPet)
-  console.log(filteredPets)
+  //console.log(filteredPets)
 
   //HANDCHANGE
   return (
     <>
       <div className="formButton">
-        <Link to={`/pets/form`}>
-          <button>ADD PET</button>
+        <Link to={`/form`}>
+          <button className="small ui orange button">ADD PET</button>
         </Link>
       </div>
       <div className="selectBar">
@@ -51,23 +51,31 @@ const Pets = () => {
         </select>
       </div>
       <div className="pets-container">
-        {filteredPets.map(({ id, name, breed, age, location, image }) => {
-          return (
-            <Link to={`/pets/${id}`} key={id}>
-              <div key={id}>
-                <img className="image" src={image} alt="pets" />
-                <h2 className="ui header">{name}</h2>
-                <p className="ui small header">
-                  {breed} . {age}
-                </p>
-                <p className="ui small header">
-                  <i className="map marker alternate icon"></i>
-                  {location}
-                </p>
-              </div>
-            </Link>
-          )
-        })}
+        {filteredPets.map(
+          ({ id, name, breed, gender, age, location, image }) => {
+            return (
+              <Link to={`/${id}`} key={id}>
+                <div key={id}>
+                  <img className="image" src={image} alt="pets" />
+                  <h2 className="ui header">{name}</h2>
+
+                  <p className="ui small header">
+                    {gender == 'Female' ? (
+                      <i className="venus icon"></i>
+                    ) : (
+                      <i className="mars icon"></i>
+                    )}
+                    {breed} . {age}
+                  </p>
+                  <p className="ui small header">
+                    <i className="map marker alternate icon"></i>
+                    {location}
+                  </p>
+                </div>
+              </Link>
+            )
+          }
+        )}
       </div>
     </>
   )

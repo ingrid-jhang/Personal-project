@@ -5,6 +5,7 @@ import Header from './Header'
 import Pets from './Pets'
 import PetSummary from './PetSummary'
 import AddPet from './AddPet'
+import ApplyForm from './ApplyForm'
 const App = () => {
   return (
     <>
@@ -12,8 +13,9 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Pets />} />
-          <Route path="/pets/form" element={<AddPet />} />
-          <Route path="/pets/:id" element={<PetSummary />} />
+          <Route path="/form" element={<AddPet />} />
+          <Route path="/:id" element={<PetSummary />} />
+          <Route path="/:id/ApplyForm" element={<ApplyForm />} />
         </Routes>
       </Router>
       <Footer />

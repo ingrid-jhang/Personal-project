@@ -30,11 +30,15 @@
   padding:20px 40%;
 }
 .formButton{
+  margin-top: 2%;
   text-align: center;
+
+}
+.addButton {
+  background-color: rgb(225, 150, 96);
 }
 
 .inputForm{
-
   text-align: center;
   background-color: bisque;
   width: 50%;
@@ -103,12 +107,21 @@ option{
   position:relative;
   font-size: 35px;
 }
+.applyButton{
+  background-color: aliceblue;
+  border-radius: 20%;
+  font-size: 15px;
+  margin-top: 14%;
+  margin-bottom: 165%;
+  margin-left: 10%;
+  padding: 4%;
+  text-align: center;
+}
 
 
 
 footer{
   margin-top: auto;
-
   bottom: 0;
   height: 30px;
   text-align: center;
