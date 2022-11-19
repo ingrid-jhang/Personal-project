@@ -30,7 +30,6 @@ const Pets = () => {
   const filteredPets = petsData.filter(filterPet)
   //console.log(filteredPets)
 
-  //HANDCHANGE
   return (
     <>
       <div className="formButton">

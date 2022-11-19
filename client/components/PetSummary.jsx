@@ -53,8 +53,9 @@ const PetSummary = () => {
           <p>
             <i className="check icon"></i>Worming and flea treatment
           </p>
+          <p>Fee : {petData.fee}</p>
           <Link to={`/${petData.id}/ApplyForm`}>
-            <button className="small ui orange button">Adopt Me !</button>
+            <button className="small ui orange button">Adopt !</button>
           </Link>
         </div>
       </div>
