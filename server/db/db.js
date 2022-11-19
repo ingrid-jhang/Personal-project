@@ -7,6 +7,8 @@ module.exports = {
   getPet,
   getPetsByType,
   addNewPet,
+  deletePet,
+  updatePet,
 }
 
 function getPets(db = connection) {
@@ -34,4 +36,11 @@ function getPetsByType(id, db = connection) {
 
 function addNewPet(newPet, db = connection) {
   return db('pets').insert(newPet)
+}
+
+function deletePet(id, db = connection) {
+  return db('pet').del().where('id', id)
+}
+function updatePet(id, newImfo, db = connection) {
+  return db('pets').where('id', id).update(newImfo)
 }

@@ -40,9 +40,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "knex": "^2.3.0",
-    "react_redux": "^1.2.1",
-    "react-router-dom": "^6.4.3",
-    "redux": "^4.2.0",
+    "mock": "^0.1.1",
     "sqlite3": "^5.1.2"
   },
   "devDependencies": {
@@ -70,6 +68,10 @@
     "prettier": "2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^6.2.2",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
     "superagent": "7.1.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
