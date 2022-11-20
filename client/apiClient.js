@@ -45,3 +45,22 @@ export function deletePet(id) {
     return res.body
   })
 }
+
+////APPLICANTS
+
+export function getApplicants() {
+  return request.get(`${petUrl}`).then((res) => {
+    //console.log(res.body)
+    return res.body
+  })
+}
+
+export function addApplicant(person) {
+  return request
+    .post(`${petUrl}applyForm`)
+    .send(person)
+    .then((res) => {
+      console.log(res.body)
+      return res.body
+    })
+}

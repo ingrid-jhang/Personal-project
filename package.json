@@ -41,6 +41,7 @@
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "mock": "^0.1.1",
+    "nock": "^13.2.9",
     "sqlite3": "^5.1.2"
   },
   "devDependencies": {

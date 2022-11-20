@@ -14,7 +14,7 @@ const UpdatePet = () => {
     return <div></div>
   }
   const [location, setlocation] = useState('')
-  const [age, setAge] = useState('')
+
   // location: '',
   // age: '',
   // description: '',

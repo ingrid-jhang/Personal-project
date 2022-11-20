@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addNewPet } from '../apiClient'
+import { addApplicant } from '../apiClient'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -33,11 +33,12 @@ function ApplyForm() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    addNewPet(form)
-      .then((newPets) => {
-        console.log(newPets)
+    addApplicant(form)
+      .then((person) => {
+        console.log(person)
         setForm(initialFormData) //clean the input after submit
         navigate('/')
+        alert('We will contact you soon :)')
       })
       .catch((err) => {
         console.error(err.message)

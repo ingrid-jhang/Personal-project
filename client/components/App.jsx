@@ -25,7 +25,8 @@ const App = () => {
           <Route path="/form" element={<AddPet />} />
           <Route path="/:id" element={<PetSummary />} />
           <Route path="/:id/Update" element={<UpdatePet />} />
-          <Route path="/:id/ApplyForm" element={<ApplyForm />} />
+          <Route path="/:id/applyForm" element={<ApplyForm />} />
+          {/* <Route path="/applyForm" element={<ApplyForm />} /> */}
         </Routes>
       </Router>
       <Footer />
