@@ -13,38 +13,40 @@ const UpdatePet = () => {
   if (!selectedPet) {
     return <div></div>
   }
-  const [newImfo, setNewImfo] = useState({
-    location: '',
-    age: '',
-    description: '',
-  })
+  const [location, setlocation] = useState('')
+  const [age, setAge] = useState('')
+  // location: '',
+  // age: '',
+  // description: '',
+  //})
 
   function handleChange(event) {
     console.log(event.target.value)
-    setNewImfo(event.target.value)
+    setlocation(event.target.value)
   }
 
   function handleUpdate(event) {
     event.preventDefault()
-    console.log(newImfo)
-    dispatch(updatePets(selectedPet.id, { newImfo }))
-    navigate(`/${selectedPet.id}`)
+    console.log({ location })
+    dispatch(updatePets(id, location))
+    navigate(`/${id}`)
   }
   return (
     <>
-      <h2>Update Imfo</h2>
-      <p>{selectedPet.name}</p>
-      <form>
-        <label htmlFor="location">Location: </label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          value={newImfo.location}
-          onChange={handleChange}
-        />
+      <div className="updateForm">
+        <h2>Update Imformation</h2>
+        <h3>{selectedPet.name}</h3>
+        <form>
+          <label htmlFor="location">Location: </label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            value={location}
+            onChange={handleChange}
+          />
 
-        <div>
+          {/* <div>
           <label htmlFor="age">Age:</label>
           <select
             id="age"
@@ -56,8 +58,8 @@ const UpdatePet = () => {
             <option value="Young">Young</option>
             <option value="Adult">Adult</option>
           </select>
-        </div>
-
+        </div> */}
+          {/* 
         <label htmlFor="description">Description: </label>
         <input
           type="text"
@@ -65,9 +67,10 @@ const UpdatePet = () => {
           id="description"
           value={newImfo.description}
           onChange={handleChange}
-        />
-        <button onClick={handleUpdate}>Submit</button>
-      </form>
+        /> */}
+          <button onClick={handleUpdate}>Submit</button>
+        </form>
+      </div>
     </>
   )
 }

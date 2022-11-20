@@ -28,10 +28,10 @@ export function addNewPet(pet) {
 }
 
 //UPDATE
-export function updatePet(id, newImfo) {
+export function updatePet(id, { location, age, description }) {
   return request
     .patch(`${petUrl}${id}/Update`)
-    .send({ newImfo })
+    .send({ location, age, description })
     .then((res) => {
       console.log(res.body)
       return res.body
