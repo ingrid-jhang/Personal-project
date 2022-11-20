@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getPets } from '../apiClient'
+
+import { useSelector } from 'react-redux'
 
 const Pets = () => {
-  const [petsData, setPetsData] = useState([])
+  const petsData = useSelector((state) => state.pets)
   const [type, setType] = useState('')
-  useEffect(() => {
-    getPets()
-      .then((pets) => {
-        //console.log(pets)
-        setPetsData(pets)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
 
   //get type from select
   function handleChange(e) {

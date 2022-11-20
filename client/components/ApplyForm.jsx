@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { addNewPet } from '../apiClient'
-import { useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const initialFormData = {
   name: '',
@@ -13,6 +14,13 @@ const initialFormData = {
 function ApplyForm() {
   const [form, setForm] = useState(initialFormData)
   const navigate = useNavigate()
+  const params = useParams()
+  const id = Number(params.id)
+  const petsData = useSelector((state) => state.pets)
+  const selectedPet = petsData.find((pet) => id === pet.id)
+  if (!selectedPet) {
+    return <div></div>
+  }
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -39,7 +47,7 @@ function ApplyForm() {
   return (
     <>
       <div className="inputForm">
-        <h2>Apply to adopt me</h2>
+        <h2>Apply to adopt {selectedPet.name}</h2>
 
         <form onSubmit={handleSubmit} className="ui form">
           <div className="field">

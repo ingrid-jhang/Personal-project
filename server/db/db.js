@@ -39,7 +39,7 @@ function addNewPet(newPet, db = connection) {
 }
 
 function deletePet(id, db = connection) {
-  return db('pet').del().where('id', id)
+  return db('pets').del().where('id', id)
 }
 function updatePet(id, newImfo, db = connection) {
   return db('pets').where('id', id).update(newImfo)

@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
-import { addNewPet } from '../apiClient'
+import { addMorePet } from '../actions/pets'
 import { useNavigate } from 'react-router-dom'
-
-const initialFormData = {
-  name: '',
-  gender: '',
-  breed: '',
-  location: '',
-  age: '',
-  color: '',
-  description: '',
-  type_id: 0,
-  fee: 125,
-  image: '',
-}
+import { useDispatch } from 'react-redux'
 
 function AddPet() {
-  const [form, setForm] = useState(initialFormData)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [newPet, setNewPet] = useState({
+    name: '',
+    gender: '',
+    breed: '',
+    location: '',
+    age: '',
+    color: '',
+    description: '',
+    type_id: 0,
+    fee: 125,
+    image: '',
+  })
 
   // const [image, setImage] = useState(initialFormData.image)
   // function onImageChange(e) {
@@ -30,24 +30,16 @@ function AddPet() {
 
   function handleChange(event) {
     const { name, value } = event.target
-    const newForm = {
-      ...form,
-      [name]: value,
-    }
-    setForm(newForm)
+    setNewPet((result) => {
+      return { ...result, [name]: value }
+    })
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    addNewPet(form)
-      .then((newPets) => {
-        console.log(newPets)
-        setForm(initialFormData) //clean the input after submit
-        navigate('/')
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
+    dispatch(addMorePet(newPet))
+    setNewPet('')
+    navigate('/')
   }
 
   return (
@@ -62,7 +54,7 @@ function AddPet() {
               <input
                 id="name"
                 onChange={handleChange}
-                value={form.name}
+                value={newPet.name}
                 name="name"
                 required
               />
@@ -100,7 +92,7 @@ function AddPet() {
               <input
                 id="breed"
                 onChange={handleChange}
-                value={form.breed}
+                value={newPet.breed}
                 name="breed"
               />
             </label>
@@ -111,7 +103,7 @@ function AddPet() {
               <input
                 id="location"
                 onChange={handleChange}
-                value={form.location}
+                value={newPet.location}
                 name="location"
               />
             </label>
@@ -135,7 +127,7 @@ function AddPet() {
               <input
                 id="color"
                 onChange={handleChange}
-                value={form.color}
+                value={newPet.color}
                 name="color"
               />
             </label>
@@ -147,7 +139,7 @@ function AddPet() {
                 className="inputDescriptionBox"
                 id="description"
                 onChange={handleChange}
-                value={form.description}
+                value={newPet.description}
                 name="description"
                 placeholder="Tell us something about him/her.."
               />

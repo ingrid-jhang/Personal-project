@@ -1,41 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
-
-import { getPet } from '../apiClient'
+import React from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { removePet } from '../actions/pets'
 
 const PetSummary = () => {
-  const [petData, setPetData] = useState([])
-  const { id } = useParams()
-  useEffect(() => {
-    getPet(id)
-      .then((petData) => {
-        setPetData(petData)
-        console.log(petData)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const params = useParams()
+  const id = Number(params.id)
+  const petsData = useSelector((state) => state.pets)
+  const selectedPet = petsData.find((pet) => id === pet.id)
+  if (!selectedPet) {
+    return <div></div>
+  }
+  function handlleDelete(event) {
+    event.preventDefault()
+    dispatch(removePet(id))
+    navigate('/')
+  }
 
   return (
     <>
       {/* <div className="list-box ui padded container segment "> */}
       <div className="pet-container">
-        <img className="image" src={petData.image} alt="pets" />
+        <img className="image" src={selectedPet.image} alt="pets" />
         <div className="pet-imfo">
-          <h1>{petData.name}</h1>
+          <h1>{selectedPet.name}</h1>
           <p>
-            {petData.gender === 'Female' && <i className="venus icon"></i>}
-            {petData.gender === 'Male' && <i className="mars icon"></i>}
-            {petData.gender}/{petData.breed}
+            {selectedPet.gender === 'Female' && <i className="venus icon"></i>}
+            {selectedPet.gender === 'Male' && <i className="mars icon"></i>}
+            {selectedPet.gender}/{selectedPet.breed}
           </p>
           <p>
             <i className="map marker alternate icon"></i>
-            {petData.location}
+            {selectedPet.location}
           </p>
-          <p>{petData.age}</p>
-          <p>Color: {petData.color}</p>
-          <p>{petData.description}</p>
+          <p>{selectedPet.age}</p>
+          <p>Color: {selectedPet.color}</p>
+          <p>{selectedPet.description}</p>
         </div>
         <div className="applyButton">
           <p>
@@ -53,10 +55,21 @@ const PetSummary = () => {
           <p>
             <i className="check icon"></i>Worming and flea treatment
           </p>
-          <p>Fee : {petData.fee}</p>
-          <Link to={`/${petData.id}/ApplyForm`}>
+          <p>Fee : {selectedPet.fee}</p>
+          <Link to={`/${selectedPet.id}/ApplyForm`}>
             <button className="small ui orange button">Adopt !</button>
           </Link>
+        </div>
+        <div className="deleteNupdate">
+          <Link to={`/${selectedPet.id}/Update`}>
+            <button className="ui inverted yellow button">Update !</button>
+          </Link>
+          <button
+            onClick={handlleDelete}
+            className="small ui inverted red button"
+          >
+            Adopted
+          </button>
         </div>
       </div>
     </>

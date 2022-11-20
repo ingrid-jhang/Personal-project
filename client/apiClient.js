@@ -17,10 +17,10 @@ export function getPet(id) {
   })
 }
 //ADD
-export function addNewPet(form) {
+export function addNewPet(pet) {
   return request
     .post(`${petUrl}form`)
-    .send(form)
+    .send(pet)
     .then((res) => {
       console.log(res.body)
       return res.body
@@ -30,8 +30,8 @@ export function addNewPet(form) {
 //UPDATE
 export function updatePet(id, newImfo) {
   return request
-    .patch(`${petUrl}${id}`)
-    .send(newImfo)
+    .patch(`${petUrl}${id}/Update`)
+    .send({ newImfo })
     .then((res) => {
       console.log(res.body)
       return res.body
