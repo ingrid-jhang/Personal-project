@@ -47,19 +47,19 @@ export function deletePets(id) {
 }
 
 //UPDATE
-export function updatePets(id, newImfo) {
+export function updatePets(id, newInfo) {
   return (dispatch) => {
-    console.log(newImfo)
-    return updatePet(id, { location: newImfo }).then((pet) => {
+    console.log(newInfo)
+    return updatePet(id, newInfo).then((pet) => {
       console.log(pet)
       dispatch(patchPet(pet))
     })
   }
 }
 
-export function patchPet(pet) {
+export function patchPet(newInfo) {
   return {
     type: UPDATE_PET,
-    payload: pet,
+    payload: newInfo,
   }
 }

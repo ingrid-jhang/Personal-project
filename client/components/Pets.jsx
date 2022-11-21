@@ -30,7 +30,7 @@ const Pets = () => {
       </div>
       <div className="selectBar">
         <label htmlFor="pet-select" className="ui small header">
-          Choose a pet:
+          TYPE OF ANIMAL:
         </label>
         <select name="pets" id="pet-select" onChange={handleChange}>
           <option value="">--Please choose a type--</option>

@@ -19,14 +19,14 @@ function AddPet() {
     image: '',
   })
 
-  // const [image, setImage] = useState(initialFormData.image)
-  // function onImageChange(e) {
-  //   console.log(typeof e.target)
-  //   console.log(e.target.value)
-  //   console.log(image)
-  //   setImage(e.target.value)
-  //   // setImage(URL.createObjectURL(e.target.image))
-  // }
+  const [image, setImage] = useState(newPet.image)
+  function onImageChange(e) {
+    console.log(typeof e.target)
+    console.log(e.target.value)
+    console.log(image)
+    setImage(e.target.value)
+    // setImage(URL.createObjectURL(e.target.image))
+  }
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -134,7 +134,7 @@ function AddPet() {
           </div>
           <div>
             <label htmlFor="description">
-              Description:
+              About:
               <input
                 className="inputDescriptionBox"
                 id="description"
@@ -145,7 +145,7 @@ function AddPet() {
               />
             </label>
           </div>
-          {/* <div>
+          <div>
             <label htmlFor="image">
               Image:
               <input
@@ -158,7 +158,7 @@ function AddPet() {
               />
             </label>
             <img src={image} alt="#" />
-          </div> */}
+          </div>
 
           <button>Add it !</button>
         </form>

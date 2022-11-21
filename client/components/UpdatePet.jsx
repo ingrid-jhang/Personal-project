@@ -13,28 +13,29 @@ const UpdatePet = () => {
   if (!selectedPet) {
     return <div></div>
   }
-  const [location, setlocation] = useState('')
-
-  // location: '',
-  // age: '',
-  // description: '',
-  //})
+  // const [location, setlocation] = useState('')
+  const [newInfo, setNewInfo] = useState({
+    location: selectedPet.location,
+    age: selectedPet.age,
+    description: selectedPet.description,
+  })
 
   function handleChange(event) {
-    console.log(event.target.value)
-    setlocation(event.target.value)
+    //console.log(event.target.value)
+    setNewInfo({ ...newInfo, [event.target.name]: event.target.value })
   }
 
   function handleUpdate(event) {
     event.preventDefault()
-    console.log({ location })
-    dispatch(updatePets(id, location))
+    console.log(newInfo)
+    dispatch(updatePets(id, newInfo))
     navigate(`/${id}`)
   }
   return (
     <>
       <div className="updateForm">
-        <h2>Update Imformation</h2>
+        <h2>Update Information</h2>
+        <h2>{selectedPet.description}</h2>
         <h3>{selectedPet.name}</h3>
         <form>
           <label htmlFor="location">Location: </label>
@@ -42,33 +43,35 @@ const UpdatePet = () => {
             type="text"
             name="location"
             id="location"
-            value={location}
+            value={newInfo.location}
             onChange={handleChange}
           />
 
-          {/* <div>
-          <label htmlFor="age">Age:</label>
-          <select
-            id="age"
+          <div>
+            <label htmlFor="age">Age:</label>
+            <select
+              id="age"
+              onChange={handleChange}
+              name="age"
+              className="ui dropdown"
+            >
+              <option value="">--Please select--</option>
+              <option value="Young">Young</option>
+              <option value="Adult">Adult</option>
+            </select>
+          </div>
+
+          <label htmlFor="description">Description: </label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            value={newInfo.description}
             onChange={handleChange}
-            name="age"
-            className="ui dropdown"
-          >
-            <option value="">--Please select--</option>
-            <option value="Young">Young</option>
-            <option value="Adult">Adult</option>
-          </select>
-        </div> */}
-          {/* 
-        <label htmlFor="description">Description: </label>
-        <input
-          type="text"
-          name="description"
-          id="description"
-          value={newImfo.description}
-          onChange={handleChange}
-        /> */}
-          <button onClick={handleUpdate}>Submit</button>
+          />
+          <div>
+            <button onClick={handleUpdate}>Submit</button>
+          </div>
         </form>
       </div>
     </>

@@ -45,9 +45,11 @@ router.post('/form', (req, res) => {
 //UPDATE PET
 router.patch('/:id/Update', (req, res) => {
   const id = req.params.id
-  const newImfo = req.body
-  db.updatePet(id, newImfo)
+  const newInfo = req.body
+  console.log(id, newInfo)
+  db.updatePet(id, newInfo)
     .then(() => {
+      console.log(newInfo)
       return db.getPet(id)
     })
     .then((pet) => {

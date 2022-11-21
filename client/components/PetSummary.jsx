@@ -55,7 +55,7 @@ const PetSummary = () => {
           <p>
             <i className="check icon"></i>Worming and flea treatment
           </p>
-          <p>Fee : {selectedPet.fee}</p>
+          <p>Fee : ${selectedPet.fee}</p>
           <Link to={`/${selectedPet.id}/ApplyForm`}>
             {/* <Link to={`/ApplyForm`}> */}
             <button className="small ui orange button">Adopt !</button>

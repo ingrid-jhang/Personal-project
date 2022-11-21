@@ -17,6 +17,7 @@ const reducer = (state = initialState, action) => {
         if (pet.id !== payload.id) {
           return pet
         } else {
+          console.log(payload)
           return payload
         }
       })

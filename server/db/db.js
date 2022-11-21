@@ -43,12 +43,17 @@ function addNewPet(newPet, db = connection) {
 function deletePet(id, db = connection) {
   return db('pets').del().where('id', id)
 }
-function updatePet(id, newImfo, db = connection) {
-  return db('pets').where('id', id).update(newImfo)
+function updatePet(id, newInfo, db = connection) {
+  return db('pets').where('id', id).update(newInfo)
 }
 
-function addApplicant(person, db = connection) {
-  return db('applicants').insert(person)
+///////////
+
+function addApplicant(id, person, db = connection) {
+  return db('applicants')
+    .join('pets', 'applicants.pet_id', 'pets.id')
+    .where('pet_id', id)
+    .insert(person)
 }
 
 function getApplicants(db = connection) {

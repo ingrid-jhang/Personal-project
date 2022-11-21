@@ -28,10 +28,10 @@ export function addNewPet(pet) {
 }
 
 //UPDATE
-export function updatePet(id, { location, age, description }) {
+export function updatePet(id, newInfo) {
   return request
     .patch(`${petUrl}${id}/Update`)
-    .send({ location, age, description })
+    .send(newInfo)
     .then((res) => {
       console.log(res.body)
       return res.body
@@ -40,7 +40,7 @@ export function updatePet(id, { location, age, description }) {
 //DELETE
 export function deletePet(id) {
   return request.delete(`${petUrl}${id}`).then((res) => {
-    console.log(res.body)
+    //console.log(res.body)
     // console.log(res.body)
     return res.body
   })
@@ -55,9 +55,9 @@ export function getApplicants() {
   })
 }
 
-export function addApplicant(person) {
+export function addApplicant(id, person) {
   return request
-    .post(`${petUrl}applyForm`)
+    .post(`${petUrl}${id}/ApplyForm`)
     .send(person)
     .then((res) => {
       console.log(res.body)

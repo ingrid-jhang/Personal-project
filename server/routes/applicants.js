@@ -16,9 +16,10 @@ router.get('/applicants', (req, res) => {
 })
 
 //ADD
-router.post('/applyForm', (req, res) => {
+router.post('/:id/ApplyForm', (req, res) => {
+  const id = req.params.id
   const person = req.body
-  db.addApplicant(person)
+  db.addApplicant(id, person)
     .then(() => {
       return db.getApplicants()
     })
