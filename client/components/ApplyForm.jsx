@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addApplicant } from '../apiClient'
+import { addApplicant } from '../apis/petsApi'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 

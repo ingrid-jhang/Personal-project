@@ -13,6 +13,7 @@ exports.seed = async function (knex) {
           age: 29,
           location: 'Napier',
           about: `I love cats`,
+          email: 'ingrid@gamil.com',
           applied_time: new Date(Date.now()),
         },
       ])

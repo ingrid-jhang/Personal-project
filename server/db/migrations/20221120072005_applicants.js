@@ -7,6 +7,7 @@ exports.up = function (knex) {
     table.string('location')
     table.integer('age')
     table.string('about')
+    table.string('email')
     table.date('applied_time')
   })
 }

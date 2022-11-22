@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500)
     })
 })
+
 // GET ONE PET
 router.get('/:id', (req, res) => {
   const id = req.params.id

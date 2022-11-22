@@ -1,4 +1,4 @@
-import { getPets, addNewPet, updatePet, deletePet } from '../apiClient'
+import { getPets, addNewPet, updatePet, deletePet } from '../apis/petsApi'
 
 export const SET_PETS = 'SET_PETS'
 // export const ADD_PET = 'ADD_PET'
@@ -31,18 +31,32 @@ export function addMorePet(pet) {
 }
 
 //DELETE
+// export function removePet(id) {
+//   return (dispatch) => {
+//     return deletePet(id).then(() => {
+//       dispatch(deletePets(id))
+//     })
+//   }
+// }
+
+// export function deletePets(id) {
+//   return {
+//     type: DELETE_PET,
+//     payload: id,
+//   }
+// }
+
+//the other way to do it
 export function removePet(id) {
   return (dispatch) => {
     return deletePet(id).then(() => {
-      dispatch(deletePets(id))
+      //delete from DB
+      dispatch({
+        //delete from redux
+        type: DELETE_PET,
+        payload: id,
+      })
     })
-  }
-}
-
-export function deletePets(id) {
-  return {
-    type: DELETE_PET,
-    payload: id,
   }
 }
 

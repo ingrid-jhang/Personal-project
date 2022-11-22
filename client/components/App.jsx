@@ -10,7 +10,7 @@ import PetSummary from './PetSummary'
 import AddPet from './AddPet'
 import ApplyForm from './ApplyForm'
 import UpdatePet from './UpdatePet'
-
+import Applicants from './Applicants'
 const App = () => {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -26,6 +26,7 @@ const App = () => {
           <Route path="/:id" element={<PetSummary />} />
           <Route path="/:id/Update" element={<UpdatePet />} />
           <Route path="/:id/applyForm" element={<ApplyForm />} />
+          <Route path="/Applicants" element={<Applicants />} />
           {/* <Route path="/applyForm" element={<ApplyForm />} /> */}
         </Routes>
       </Router>

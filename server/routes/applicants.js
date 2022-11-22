@@ -4,9 +4,10 @@ const router = express.Router()
 const db = require('../db/db')
 
 //GET
-router.get('/applicants', (req, res) => {
+router.get('/', (req, res) => {
   db.getApplicants()
     .then((applicants) => {
+      console.log(applicants)
       res.json(applicants)
     })
     .catch((e) => {
@@ -16,8 +17,8 @@ router.get('/applicants', (req, res) => {
 })
 
 //ADD
-router.post('/:id/ApplyForm', (req, res) => {
-  const id = req.params.id
+router.post('/ApplyForm', (req, res) => {
+  const id = req.params.pet_id
   const person = req.body
   db.addApplicant(id, person)
     .then(() => {

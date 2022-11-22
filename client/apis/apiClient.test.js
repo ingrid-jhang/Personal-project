@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import { getPets, getPet } from './apiClient'
+import { getPets, getPet } from './petsApi'
 
 describe('get all the pets', () => {
   it('get pets from the api', () => {

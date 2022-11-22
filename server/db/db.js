@@ -9,8 +9,8 @@ module.exports = {
   addNewPet,
   deletePet,
   updatePet,
-  addApplicant,
   getApplicants,
+  addApplicant,
 }
 
 function getPets(db = connection) {
@@ -48,14 +48,13 @@ function updatePet(id, newInfo, db = connection) {
 }
 
 ///////////
+function getApplicants(db = connection) {
+  return db('applicants').select()
+}
 
 function addApplicant(id, person, db = connection) {
   return db('applicants')
     .join('pets', 'applicants.pet_id', 'pets.id')
     .where('pet_id', id)
     .insert(person)
-}
-
-function getApplicants(db = connection) {
-  return db('applicants').select()
 }

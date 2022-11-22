@@ -61,7 +61,7 @@ const PetSummary = () => {
             <button className="small ui orange button">Adopt !</button>
           </Link>
         </div>
-        <div className="deleteNupdate">
+        <div className="deleteButton">
           <Link to={`/${selectedPet.id}/Update`}>
             <button className="ui inverted yellow button">Update !</button>
           </Link>
