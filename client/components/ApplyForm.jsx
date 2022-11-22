@@ -100,7 +100,7 @@ function ApplyForm() {
             <label htmlFor="aboutYou">
               About you:
               <input
-                className="inputaboutYouBox"
+                className="inputBox"
                 id="aboutYou"
                 onChange={handleChange}
                 value={form.aboutYou}

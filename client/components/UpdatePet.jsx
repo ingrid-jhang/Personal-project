@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { updatePets } from '../actions/pets'
@@ -9,16 +9,20 @@ const UpdatePet = () => {
   const params = useParams()
   const id = Number(params.id)
   const petsData = useSelector((state) => state.pets)
-  const selectedPet = petsData.find((pet) => id === pet.id)
-  if (!selectedPet) {
-    return <div></div>
-  }
-  // const [location, setlocation] = useState('')
+  const selectedPet = petsData?.find((pet) => id === pet.id)
+
   const [newInfo, setNewInfo] = useState({
-    location: selectedPet.location,
-    age: selectedPet.age,
-    description: selectedPet.description,
+    location: '',
+    age: '',
+    description: '',
   })
+  useEffect(() => {
+    setNewInfo({
+      location: selectedPet?.location || '',
+      age: selectedPet?.age || '',
+      description: selectedPet?.description || '',
+    })
+  }, [petsData])
 
   function handleChange(event) {
     //console.log(event.target.value)
@@ -31,22 +35,26 @@ const UpdatePet = () => {
     dispatch(updatePets(id, newInfo))
     navigate(`/${id}`)
   }
+  if (!selectedPet) {
+    return <div></div>
+  }
   return (
     <>
       <div className="updateForm">
         <h2>Update Information</h2>
-        <h2>{selectedPet.description}</h2>
+
         <h3>{selectedPet.name}</h3>
         <form>
-          <label htmlFor="location">Location: </label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            value={newInfo.location}
-            onChange={handleChange}
-          />
-
+          <div>
+            <label htmlFor="location">Location: </label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              value={newInfo.location}
+              onChange={handleChange}
+            />
+          </div>
           <div>
             <label htmlFor="age">Age:</label>
             <select
@@ -60,15 +68,17 @@ const UpdatePet = () => {
               <option value="Adult">Adult</option>
             </select>
           </div>
-
-          <label htmlFor="description">Description: </label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            value={newInfo.description}
-            onChange={handleChange}
-          />
+          <div>
+            <label htmlFor="description">Description: </label>
+            <input
+              className="inputDescriptionBox"
+              type="text"
+              name="description"
+              id="description"
+              value={newInfo.description}
+              onChange={handleChange}
+            />
+          </div>
           <div>
             <button onClick={handleUpdate}>Submit</button>
           </div>

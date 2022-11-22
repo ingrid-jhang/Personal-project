@@ -15,7 +15,7 @@ function AddPet() {
     color: '',
     description: '',
     type_id: 0,
-    fee: 125,
+    fee: '',
     image: '',
   })
 
@@ -131,6 +131,19 @@ function AddPet() {
                 name="color"
               />
             </label>
+          </div>
+          <div>
+            <label htmlFor="fee">Fee:</label>
+            <select
+              id="fee"
+              onChange={handleChange}
+              name="fee"
+              className="ui dropdown"
+            >
+              <option value="">--Please select--</option>
+              <option value="125">Cats :$125</option>
+              <option value="250">Dogs :$250</option>
+            </select>
           </div>
           <div>
             <label htmlFor="description">

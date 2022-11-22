@@ -45,11 +45,11 @@ const PetSummary = () => {
           </p>
 
           <p>
-            <i className="check icon"></i>Microchipped
+            <i className="check icon"></i>I have been microchipped
           </p>
 
           <p>
-            <i className="check icon"></i>Microchipped
+            <i className="check icon"></i>Vaccinations up to date
           </p>
 
           <p>
