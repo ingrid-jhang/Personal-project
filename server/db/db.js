@@ -49,12 +49,24 @@ function updatePet(id, newInfo, db = connection) {
 
 ///////////
 function getApplicants(db = connection) {
-  return db('applicants').select()
+  return db('applicants')
+    .join('pets', 'pets.id', 'applicants.pet_id')
+    .select(
+      'pets.name as petName',
+      'applicants.id',
+      'applicants.pet_id',
+      'applicants.name',
+      'applicants.phone',
+      'applicants.location',
+      'applicants.age',
+      'applicants.about',
+      'applicants.email',
+      'applicants.applied_time'
+    )
 }
 
-function addApplicant(id, person, db = connection) {
+function addApplicant(person, db = connection) {
   return db('applicants')
-    .join('pets', 'applicants.pet_id', 'pets.id')
-    .where('pet_id', id)
+    .join('pets', 'pets.id', 'applicants.pet_id')
     .insert(person)
 }

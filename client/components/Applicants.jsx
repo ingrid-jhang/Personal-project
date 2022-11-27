@@ -5,7 +5,7 @@ import { getApplicants } from '../apis/applicantsApi'
 const Applicants = () => {
   const [applicantsData, setApplicantsData] = useState([])
   useEffect(() => {
-    console.log(applicantsData)
+    //console.log(applicantsData)
     getApplicants()
       .then((data) => {
         setApplicantsData(data)
@@ -18,7 +18,6 @@ const Applicants = () => {
   return (
     <>
       <div className="pets-container">
-        <h2>Hi</h2>
         {applicantsData.map(
           ({
             id,
@@ -30,17 +29,21 @@ const Applicants = () => {
             email,
             about,
             applied_time,
+            petName,
           }) => {
             return (
               <div key={id}>
-                <h2 className="ui header">{name}</h2>
-                <p className="ui small header">{pet_id}</p>
-                <p className="ui small header">{phone}</p>
-                <p className="ui small header">{age}</p>
-                <p className="ui small header">{email}</p>
-                <p className="ui small header">{location}</p>
-                <p className="ui small header">{about}</p>
-                <p className="ui small header">{applied_time}</p>
+                <p className="ui header">{name}</p>
+                <p className="ui small header">PET ID: {pet_id}</p>
+                <p className="ui small header">PET NAME: {petName}</p>
+                <p className="ui small header">PHONE: {phone}</p>
+                <p className="ui small header">AGE: {age}</p>
+                <p className="ui small header">EMAIL: {email}</p>
+                <p className="ui small header">LOCATION: {location}</p>
+                <p className="ui small header">ABOUT: {about}</p>
+                <p className="ui small header">
+                  APPLIED TIME: {new Date(applied_time).toLocaleString()}
+                </p>
               </div>
             )
           }

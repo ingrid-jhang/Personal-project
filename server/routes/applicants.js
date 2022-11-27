@@ -7,7 +7,7 @@ const db = require('../db/db')
 router.get('/', (req, res) => {
   db.getApplicants()
     .then((applicants) => {
-      console.log(applicants)
+      //console.log(applicants)
       res.json(applicants)
     })
     .catch((e) => {
@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 
 //ADD
 router.post('/ApplyForm', (req, res) => {
-  const id = req.params.pet_id
+  // const id = req.params.pet_id
   const person = req.body
-  db.addApplicant(id, person)
+  db.addApplicant(person)
     .then(() => {
       return db.getApplicants()
     })

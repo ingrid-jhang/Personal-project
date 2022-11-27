@@ -63,9 +63,9 @@ export function removePet(id) {
 //UPDATE
 export function updatePets(id, newInfo) {
   return (dispatch) => {
-    console.log(newInfo)
+    //console.log(newInfo)
     return updatePet(id, newInfo).then((pet) => {
-      console.log(pet)
+      //console.log(pet)
       dispatch(patchPet(pet))
     })
   }

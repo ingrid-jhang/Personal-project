@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addApplicant } from '../apis/petsApi'
+import { addApplicant, getApplicants } from '../apis/applicantsApi'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -8,7 +8,8 @@ const initialFormData = {
   phone: '',
   location: '',
   age: '',
-  aboutYou: '',
+  about: '',
+  email: '',
 }
 
 function ApplyForm() {
@@ -23,9 +24,12 @@ function ApplyForm() {
   }
 
   function handleChange(event) {
+    //let appliedTime = new Date(applied_time).toLocaleString()
     const { name, value } = event.target
     const newForm = {
       ...form,
+      pet_id: selectedPet.id,
+      applied_time: new Date(Date.now()),
       [name]: value,
     }
     setForm(newForm)
@@ -34,10 +38,11 @@ function ApplyForm() {
   function handleSubmit(event) {
     event.preventDefault()
     addApplicant(form)
-      .then((person) => {
-        console.log(person)
+      .then((form) => {
+        console.log(form)
+        getApplicants()
         setForm(initialFormData) //clean the input after submit
-        navigate('/')
+        navigate('/applicants')
         alert('We will contact you soon :)')
       })
       .catch((err) => {
@@ -75,6 +80,17 @@ function ApplyForm() {
             </label>
           </div>
           <div>
+            <label htmlFor="email">
+              Email:
+              <input
+                id="email"
+                onChange={handleChange}
+                value={form.email}
+                name="email"
+              />
+            </label>
+          </div>
+          <div>
             <label htmlFor="location">
               Location:
               <input
@@ -97,14 +113,14 @@ function ApplyForm() {
             </label>
           </div>
           <div>
-            <label htmlFor="aboutYou">
+            <label htmlFor="about">
               About you:
               <input
                 className="inputBox"
-                id="aboutYou"
+                id="about"
                 onChange={handleChange}
-                value={form.aboutYou}
-                name="aboutYou"
+                value={form.about}
+                name="about"
                 placeholder="Tell us something about you.."
               />
             </label>
