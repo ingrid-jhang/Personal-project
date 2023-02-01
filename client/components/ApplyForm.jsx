@@ -24,7 +24,6 @@ function ApplyForm() {
   }
 
   function handleChange(event) {
-    //let appliedTime = new Date(applied_time).toLocaleString()
     const { name, value } = event.target
     const newForm = {
       ...form,
